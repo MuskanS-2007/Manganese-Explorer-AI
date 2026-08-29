@@ -1,0 +1,6 @@
+Location,Manganese_Percentage,Geological_Score,Rainfall_mm,Soil_Moisture,Vegetation_Index,Land_Temperature_C,Production_Target_Tonnes,Actual_Production_Tonnes,Equipment_Downtime_Hours,Blasting_Delay_Hours
+Keonjhar,32,68,120,42,0.65,31,10000,9200,8,2
+Bellary,28,55,85,38,0.48,35,8500,7900,12,5
+Visakhapatnam,35,48,110,45,0.72,30,9000,8700,6,1
+Chitradurga,24,38,95,50,0.55,33,7500,6200,18,7
+Nagpur,30,46,105,41,0.60,32,8000,7600,10,3    
