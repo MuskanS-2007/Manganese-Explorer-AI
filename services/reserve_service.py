@@ -13,12 +13,15 @@ def classify_reserve_potential(reserve_score):
 
 def analyze_reserves(df):
     """
-    Analyze geological and real satellite/environmental indicators
-    to prioritize manganese reserve locations.
+    Analyze available real satellite, terrain, and environmental
+    indicators to prioritize locations for further exploration.
+
+    This prototype prioritization does not confirm the presence
+    of manganese reserves.
     """
 
     if df is None or df.empty:
-        raise ValueError("No geological data is available for analysis.")
+        raise ValueError("No data is available for reserve analysis.")
 
     if "Location" not in df.columns:
         raise ValueError("Missing required column: Location")
@@ -27,17 +30,6 @@ def analyze_reserves(df):
 
     score_components = []
     weights = []
-
-    # ---------- GEOLOGICAL INDICATOR ----------
-    if "Geological_Score" in results.columns:
-        geological_score = pd.to_numeric(
-            results["Geological_Score"],
-            errors="coerce"
-        ).clip(0, 100)
-
-        if geological_score.notna().any():
-            score_components.append(geological_score)
-            weights.append(0.60)
 
     # ---------- SOIL / GEOCHEMICAL ANOMALY ----------
     if "Soil_Anomaly_Index" in results.columns:
@@ -54,6 +46,41 @@ def analyze_reserves(df):
             score_components.append(soil_score)
             weights.append(0.40)
 
+    # ---------- REAL TERRAIN SUITABILITY ----------
+    if (
+        "GEE_Elevation_m" in results.columns
+        and "GEE_Slope_Degrees" in results.columns
+    ):
+        elevation = pd.to_numeric(
+            results["GEE_Elevation_m"],
+            errors="coerce"
+        )
+
+        slope = pd.to_numeric(
+            results["GEE_Slope_Degrees"],
+            errors="coerce"
+        )
+
+        # Terrain accessibility / suitability indicator
+        elevation_score = (
+            elevation.clip(0, 1500) / 1500 * 100
+        )
+
+        slope_score = (
+            100 - slope.clip(0, 45) / 45 * 100
+        )
+
+        terrain_score = (
+            elevation_score * 0.5
+            + slope_score * 0.5
+        ).clip(0, 100)
+
+        results["Terrain_Suitability_Score"] = terrain_score.round(1)
+
+        if terrain_score.notna().any():
+            score_components.append(terrain_score)
+            weights.append(0.25)
+
     # ---------- REAL SATELLITE NDVI ----------
     if "GEE_NDVI" in results.columns:
         ndvi_score = (
@@ -68,7 +95,7 @@ def analyze_reserves(df):
 
         if ndvi_score.notna().any():
             score_components.append(ndvi_score)
-            weights.append(0.15)
+            weights.append(0.20)
 
     # ---------- REAL NASA RAINFALL ----------
     if "NASA_Rainfall_mm" in results.columns:

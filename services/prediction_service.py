@@ -3,25 +3,37 @@ import pandas as pd
 
 def predict_reserve_potential(df):
     """
-    Predict reserve potential using available geological
-    and environmental indicators.
+    Predict and classify exploration potential using the
+    calculated reserve potential score.
+
+    This prediction is a decision-support indicator and does
+    not confirm the presence of manganese reserves.
     """
+
+    if df is None or df.empty:
+        return None, "No data available for prediction."
+
+    if "Reserve_Potential_Score" not in df.columns:
+        return None, (
+            "Reserve potential analysis must be completed "
+            "before prediction."
+        )
 
     results = df.copy()
 
-    if "Reserve_Potential_Score" in results.columns:
-        score = results["Reserve_Potential_Score"]
-    elif "Geological_Score" in results.columns:
-        score = results["Geological_Score"]
-    else:
-        return None, "No suitable data available for prediction."
+    score = pd.to_numeric(
+        results["Reserve_Potential_Score"],
+        errors="coerce"
+    ).clip(0, 100)
 
-    results["Predicted_Reserve_Score"] = score.clip(0, 100)
+    results["Predicted_Reserve_Score"] = score.round(1)
 
     def classify_prediction(value):
-        if value >= 70:
+        if pd.isna(value):
+            return "Not Available"
+        elif value >= 70:
             return "High"
-        elif value >= 40:
+        elif value >= 45:
             return "Medium"
         return "Low"
 

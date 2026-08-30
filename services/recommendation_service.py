@@ -18,6 +18,7 @@ def generate_recommendations(df):
         else:
             shortfall_percentage = 0
 
+
         prediction = row.get(
             "AI_Prediction",
             row.get("Reserve_Potential", "Medium")
