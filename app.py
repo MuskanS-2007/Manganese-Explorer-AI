@@ -22,16 +22,6 @@ st.set_page_config(
 )
 
 
-# ==========================================
-# HEADER
-# ==========================================
-
-st.title("⛏️ Manganese Explorer AI")
-
-st.subheader(
-    "AI/ML & Space Technology for Manganese Reserve "
-    "Identification and Production Intelligence"
-)
 # ---------- HEADER ----------
 st.title(" Manganese Explorer AI")
 st.subheader("AI/ML & Space Technology for Manganese Reserve Identification and Production Intelligence")
@@ -44,12 +34,6 @@ st.success(
 
 st.divider()
 
-
-# ==========================================
-# INTRODUCTION
-# ==========================================
-
-st.header("🌍 Intelligent Manganese Decision Support System")
 # ---------- INTRODUCTION ----------
 st.header(" Intelligent Manganese Decision Support System")
 
@@ -67,60 +51,40 @@ decision-making for manganese exploration and mining operations.
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.subheader("🗺️ Reserve Identification")
+    st.subheader("Reserve Identification")
     st.write(
         "Identify potential manganese reserve locations using "
         "geological and surface indicators."
     )
 
 with col2:
-    st.subheader("🤖 AI/ML Prediction")
+    st.subheader("AI/ML Prediction")
     st.write(
         "Predict manganese reserve potential and classify locations "
         "based on available data."
     )
 
 with col3:
-    st.subheader("📉 Shortfall Prediction")
+    st.subheader("Shortfall Prediction")
     st.write(
         "Identify possible production shortfalls using production "
         "and operational indicators."
     )
 
 with col4:
-    st.subheader("💡 Corrective Actions")
+    st.subheader("Corrective Actions")
     st.write(
         "Provide intelligent recommendations to reduce production "
         "risks and improve continuity."
     )
-
-    st.subheader("Reserve Identification")
-    st.write("Identify potential manganese reserve locations using geological and surface indicators.")
-
-with col2:
-    st.subheader("AI/ML Prediction")
-    st.write("Predict manganese reserve potential and classify locations based on available data.")
-
-with col3:
-    st.subheader("Shortfall Prediction")
-    st.write("Identify possible production shortfalls using production and operational indicators.")
-
-with col4:
-    st.subheader("Corrective Actions")
-    st.write("Provide intelligent recommendations to reduce production risks and improve continuity.")
-
 st.divider()
 
 
 # ==========================================
 # RESERVE IDENTIFICATION & MAPPING
 # ==========================================
-
-st.header("🗺️ AI Reserve Identification & Mapping")
-st.divider()
-
 st.header("AI Reserve Identification & Mapping")
-
+st.divider()
 st.write(
     "Automatically analyze available geological, environmental, "
     "and satellite data to identify and prioritize potential "
