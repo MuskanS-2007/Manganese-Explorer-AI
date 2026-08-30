@@ -4,3 +4,4 @@ numpy
 requests
 earthengine-api
 folium
+streamlit-folium
