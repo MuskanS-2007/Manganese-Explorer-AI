@@ -21,6 +21,7 @@ st.set_page_config(
     layout="wide"
 )
 
+<<<<<<< HEAD
 
 # ==========================================
 # HEADER
@@ -32,6 +33,11 @@ st.subheader(
     "AI/ML & Space Technology for Manganese Reserve "
     "Identification and Production Intelligence"
 )
+=======
+# ---------- HEADER ----------
+st.title(" Manganese Explorer AI")
+st.subheader("AI/ML & Space Technology for Manganese Reserve Identification and Production Intelligence")
+>>>>>>> 5c20688 (Prepare app for deployment)
 
 st.success(
     "Smart India Hackathon 2026 | Problem Statement 26009 | "
@@ -41,12 +47,17 @@ st.success(
 
 st.divider()
 
+<<<<<<< HEAD
 
 # ==========================================
 # INTRODUCTION
 # ==========================================
 
 st.header("🌍 Intelligent Manganese Decision Support System")
+=======
+# ---------- INTRODUCTION ----------
+st.header(" Intelligent Manganese Decision Support System")
+>>>>>>> 5c20688 (Prepare app for deployment)
 
 st.write("""
 This platform integrates geological, satellite/space technology,
@@ -62,6 +73,7 @@ decision-making for manganese exploration and mining operations.
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
+<<<<<<< HEAD
     st.subheader("🗺️ Reserve Identification")
     st.write(
         "Identify potential manganese reserve locations using "
@@ -89,6 +101,22 @@ with col4:
         "risks and improve continuity."
     )
 
+=======
+    st.subheader("Reserve Identification")
+    st.write("Identify potential manganese reserve locations using geological and surface indicators.")
+
+with col2:
+    st.subheader("AI/ML Prediction")
+    st.write("Predict manganese reserve potential and classify locations based on available data.")
+
+with col3:
+    st.subheader("Shortfall Prediction")
+    st.write("Identify possible production shortfalls using production and operational indicators.")
+
+with col4:
+    st.subheader("Corrective Actions")
+    st.write("Provide intelligent recommendations to reduce production risks and improve continuity.")
+>>>>>>> 5c20688 (Prepare app for deployment)
 
 st.divider()
 
@@ -97,7 +125,13 @@ st.divider()
 # RESERVE IDENTIFICATION & MAPPING
 # ==========================================
 
+<<<<<<< HEAD
 st.header("🗺️ AI Reserve Identification & Mapping")
+=======
+st.divider()
+
+st.header("AI Reserve Identification & Mapping")
+>>>>>>> 5c20688 (Prepare app for deployment)
 
 st.write(
     "Automatically analyze available geological, environmental, "
@@ -111,6 +145,7 @@ st.info(
     "of each analyzed location."
 )
 
+<<<<<<< HEAD
 
 # ==========================================
 # COMPLETE ANALYSIS PIPELINE
@@ -118,6 +153,9 @@ st.info(
 
 if st.button("🔍 Run Complete Manganese Intelligence Analysis"):
 
+=======
+if st.button("Run Complete Manganese Intelligence Analysis"):
+>>>>>>> 5c20688 (Prepare app for deployment)
     try:
         with st.spinner(
             "Fetching available data and running AI analysis..."
@@ -165,6 +203,7 @@ if st.button("🔍 Run Complete Manganese Intelligence Analysis"):
                 shortfall_df.copy()
             )
 
+<<<<<<< HEAD
             st.session_state["recommendation_df"] = (
                 recommendation_df.copy()
             )
@@ -172,9 +211,12 @@ if st.button("🔍 Run Complete Manganese Intelligence Analysis"):
         st.success(
             "✅ Complete manganese intelligence analysis completed!"
         )
+=======
+        st.success("Complete manganese intelligence analysis completed!")
+>>>>>>> 5c20688 (Prepare app for deployment)
 
     except Exception as error:
-        st.error(f"❌ Analysis failed: {error}")
+        st.error(f"Analysis failed: {error}")
 
 
 # ==========================================
@@ -245,9 +287,13 @@ else:
 # ==========================================
 
 st.divider()
+<<<<<<< HEAD
 
 st.header("🤖 AI/ML Reserve Prediction")
 
+=======
+st.header("AI/ML Reserve Prediction")
+>>>>>>> 5c20688 (Prepare app for deployment)
 st.write(
     "AI-assisted prediction of manganese reserve potential based on "
     "the analyzed geological and environmental data."
@@ -277,7 +323,7 @@ if "predicted_df" in st.session_state:
             f'{predicted_df["Predicted_Reserve_Score"].mean():.1f}'
         )
 
-    st.subheader("🤖 AI Prediction Results")
+    st.subheader("AI Prediction Results")
 
     display_columns = [
         "Location",
@@ -327,6 +373,74 @@ st.header("📉 Production Shortfall Prediction")
 st.write(
     "Analyze production performance to identify potential shortfalls "
     "and operational risks."
+)
+
+# ==========================================
+# HEADER
+# ==========================================
+
+st.title("⛏️ Manganese Explorer AI")
+
+st.subheader(
+    "AI/ML & Space Technology for Manganese Reserve "
+    "Identification and Production Intelligence"
+)
+if "recommendation_df" in st.session_state:
+
+    recommendation_df = st.session_state["recommendation_df"]
+
+    st.success("Smart recommendations generated successfully!")
+
+    high_priority = (
+        recommendation_df["Action_Priority"] == "High"
+    ).sum()
+
+    medium_priority = (
+        recommendation_df["Action_Priority"] == "Medium"
+    ).sum()
+
+    low_priority = (
+        recommendation_df["Action_Priority"] == "Low"
+    ).sum()
+
+    col1, col2, col3 = st.columns(3)
+
+    col1.metric("🔴 High Priority Actions", int(high_priority))
+    col2.metric("🟡 Medium Priority Actions", int(medium_priority))
+    col3.metric("🟢 Low Priority Actions", int(low_priority))
+
+    st.subheader("📋 Recommended Actions by Location")
+
+    display_columns = [
+        "Location",
+        "Recommendation",
+        "Action_Priority"
+    ]
+
+    available_columns = [
+        col for col in display_columns
+        if col in recommendation_df.columns
+    ]
+
+    st.dataframe(
+        recommendation_df[available_columns],
+        use_container_width=True
+    )
+
+else:
+    st.info(
+        "🔍 Run the Complete Manganese Intelligence Analysis "
+        "to generate smart recommendations."
+    )# -------------------------------------------------
+# CORRECTIVE ACTIONS & SMART RECOMMENDATIONS
+# -------------------------------------------------
+
+st.divider()
+
+st.header("Corrective Actions & Smart Recommendations")
+st.write(
+    "AI-supported recommendations based on production performance "
+    "and manganese reserve potential."
 )
 
 if "shortfall_df" in st.session_state:
