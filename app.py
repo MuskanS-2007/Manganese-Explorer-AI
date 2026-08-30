@@ -21,7 +21,6 @@ st.set_page_config(
     layout="wide"
 )
 
-<<<<<<< HEAD
 
 # ==========================================
 # HEADER
@@ -33,11 +32,9 @@ st.subheader(
     "AI/ML & Space Technology for Manganese Reserve "
     "Identification and Production Intelligence"
 )
-=======
 # ---------- HEADER ----------
 st.title(" Manganese Explorer AI")
 st.subheader("AI/ML & Space Technology for Manganese Reserve Identification and Production Intelligence")
->>>>>>> 5c20688 (Prepare app for deployment)
 
 st.success(
     "Smart India Hackathon 2026 | Problem Statement 26009 | "
@@ -47,17 +44,14 @@ st.success(
 
 st.divider()
 
-<<<<<<< HEAD
 
 # ==========================================
 # INTRODUCTION
 # ==========================================
 
 st.header("🌍 Intelligent Manganese Decision Support System")
-=======
 # ---------- INTRODUCTION ----------
 st.header(" Intelligent Manganese Decision Support System")
->>>>>>> 5c20688 (Prepare app for deployment)
 
 st.write("""
 This platform integrates geological, satellite/space technology,
@@ -73,7 +67,6 @@ decision-making for manganese exploration and mining operations.
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-<<<<<<< HEAD
     st.subheader("🗺️ Reserve Identification")
     st.write(
         "Identify potential manganese reserve locations using "
@@ -101,7 +94,6 @@ with col4:
         "risks and improve continuity."
     )
 
-=======
     st.subheader("Reserve Identification")
     st.write("Identify potential manganese reserve locations using geological and surface indicators.")
 
@@ -116,7 +108,6 @@ with col3:
 with col4:
     st.subheader("Corrective Actions")
     st.write("Provide intelligent recommendations to reduce production risks and improve continuity.")
->>>>>>> 5c20688 (Prepare app for deployment)
 
 st.divider()
 
@@ -125,13 +116,10 @@ st.divider()
 # RESERVE IDENTIFICATION & MAPPING
 # ==========================================
 
-<<<<<<< HEAD
 st.header("🗺️ AI Reserve Identification & Mapping")
-=======
 st.divider()
 
 st.header("AI Reserve Identification & Mapping")
->>>>>>> 5c20688 (Prepare app for deployment)
 
 st.write(
     "Automatically analyze available geological, environmental, "
@@ -145,7 +133,6 @@ st.info(
     "of each analyzed location."
 )
 
-<<<<<<< HEAD
 
 # ==========================================
 # COMPLETE ANALYSIS PIPELINE
@@ -153,70 +140,65 @@ st.info(
 
 if st.button("🔍 Run Complete Manganese Intelligence Analysis"):
 
-=======
-if st.button("Run Complete Manganese Intelligence Analysis"):
->>>>>>> 5c20688 (Prepare app for deployment)
-    try:
-        with st.spinner(
+    if st.button("Run Complete Manganese Intelligence Analysis"):
+        try:
+            with st.spinner(
             "Fetching available data and running AI analysis..."
         ):
 
             # 1. Fetch data automatically
-            data = fetch_online_data()
+                data = fetch_online_data()
 
             # 2. Add geological evidence
-            data = add_geological_evidence(data)
+                data = add_geological_evidence(data)
 
             # Store original analysis data
-            st.session_state["analysis_data"] = data.copy()
+                st.session_state["analysis_data"] = data.copy()
 
             # 3. Reserve identification
-            reserve_results = analyze_reserves(data)
+                reserve_results = analyze_reserves(data)
 
             # IMPORTANT: Store reserve results for table and map
-            st.session_state["reserve_results"] = (
-                reserve_results.copy()
+                st.session_state["reserve_results"] = (
+                    reserve_results.copy()
             )
 
             # 4. AI reserve prediction
-            predicted_df, prediction_error = (
-                predict_reserve_potential(reserve_results.copy())
+                predicted_df, prediction_error = (
+                    predict_reserve_potential(reserve_results.copy())
             )
 
-            if prediction_error:
-                raise ValueError(prediction_error)
+                if prediction_error:
+                    raise ValueError(prediction_error)
 
-            st.session_state["predicted_df"] = predicted_df.copy()
+                st.session_state["predicted_df"] = predicted_df.copy()
 
             # 5. Production shortfall analysis
-            shortfall_df, shortfall_error = (
-                analyze_shortfall(predicted_df.copy())
+                shortfall_df, shortfall_error = (
+                    analyze_shortfall(predicted_df.copy())
             )
 
-            if shortfall_error:
-                raise ValueError(shortfall_error)
+                if shortfall_error:
+                    raise ValueError(shortfall_error)
 
-            st.session_state["shortfall_df"] = shortfall_df.copy()
+                st.session_state["shortfall_df"] = shortfall_df.copy()
 
             # 6. Smart recommendations
-            recommendation_df = generate_recommendations(
-                shortfall_df.copy()
+                recommendation_df = generate_recommendations(
+                    shortfall_df.copy()
             )
 
-<<<<<<< HEAD
-            st.session_state["recommendation_df"] = (
-                recommendation_df.copy()
+                st.session_state["recommendation_df"] = (
+                    recommendation_df.copy()
             )
 
-        st.success(
-            "✅ Complete manganese intelligence analysis completed!"
+            st.success(
+                "✅ Complete manganese intelligence analysis completed!"
         )
-=======
-        st.success("Complete manganese intelligence analysis completed!")
->>>>>>> 5c20688 (Prepare app for deployment)
+            st.success("Complete manganese intelligence analysis completed!")
 
-    except Exception as error:
-        st.error(f"Analysis failed: {error}")
+        except Exception as error:
+            st.error(f"Analysis failed: {error}")
 
 
 # ==========================================
@@ -287,13 +269,10 @@ else:
 # ==========================================
 
 st.divider()
-<<<<<<< HEAD
 
 st.header("🤖 AI/ML Reserve Prediction")
 
-=======
 st.header("AI/ML Reserve Prediction")
->>>>>>> 5c20688 (Prepare app for deployment)
 st.write(
     "AI-assisted prediction of manganese reserve potential based on "
     "the analyzed geological and environmental data."
